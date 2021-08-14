@@ -18,7 +18,8 @@
         </body>
 
         <body name="shelf" pos="0 .8 0">
-            <include file="../objects/assets/shelf.xml"/>
+            <!-- <include file="../objects/assets/shelf.xml"/> -->
+            <include file="../objects/assets/shelf_large.xml"/>
         </body>
     </worldbody>
 

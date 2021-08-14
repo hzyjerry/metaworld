@@ -156,7 +156,7 @@ class SawyerXYZEnv(SawyerMocapBase, metaclass=abc.ABCMeta):
     def set_task(self, task):
         self._set_task_called = True
         data = pickle.loads(task.data)
-        assert isinstance(self, data['env_cls'])
+        # assert isinstance(self, data['env_cls'])
         del data['env_cls']
         self._last_rand_vec = data['rand_vec']
         self._freeze_rand_vec = True
@@ -192,9 +192,10 @@ class SawyerXYZEnv(SawyerMocapBase, metaclass=abc.ABCMeta):
         qvel = self.data.qvel.flat.copy()
         qpos[9:12] = pos.copy()
         qvel[9:15] = 0
-        self.set_state(qpos, qvel)
+        self.set_metaworld_state(qpos, qvel)
 
     def _get_site_pos(self, siteName):
+        # import pdb; pdb.set_trace()
         _id = self.model.site_names.index(siteName)
         return self.data.site_xpos[_id].copy()
 
@@ -209,6 +210,7 @@ class SawyerXYZEnv(SawyerMocapBase, metaclass=abc.ABCMeta):
         assert pos.ndim == 1
 
         self.data.site_xpos[self.model.site_name2id(name)] = pos[:3]
+
 
     @property
     def _target_site_config(self):
@@ -392,7 +394,6 @@ class SawyerXYZEnv(SawyerMocapBase, metaclass=abc.ABCMeta):
             else self.goal_space.high
         gripper_low = -1.
         gripper_high = +1.
-
         return Box(
             np.hstack((self._HAND_SPACE.low, gripper_low, obj_low, self._HAND_SPACE.low, gripper_low, obj_low, goal_low)),
             np.hstack((self._HAND_SPACE.high, gripper_high, obj_high, self._HAND_SPACE.high, gripper_high, obj_high, goal_high))

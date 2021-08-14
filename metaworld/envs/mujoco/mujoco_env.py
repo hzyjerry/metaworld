@@ -89,7 +89,7 @@ class MujocoEnv(gym.Env, abc.ABC):
             self.viewer_setup()
         return ob
 
-    def set_state(self, qpos, qvel):
+    def set_metaworld_state(self, qpos, qvel):
         assert qpos.shape == (self.model.nq,) and qvel.shape == (self.model.nv,)
         old_state = self.sim.get_state()
         new_state = mujoco_py.MjSimState(old_state.time, qpos, qvel,
@@ -121,7 +121,7 @@ class MujocoEnv(gym.Env, abc.ABC):
     def render(self, offscreen=False, camera_name="corner2", resolution=(640, 480)):
         assert_string = ("camera_name should be one of ",
                 "corner3, corner, corner2, topview, gripperPOV, behindGripper")
-        assert camera_name in {"corner3", "corner", "corner2", 
+        assert camera_name in {"corner3", "corner", "corner2",
             "topview", "gripperPOV", "behindGripper"}, assert_string
         if not offscreen:
             self._get_viewer('human').render()
