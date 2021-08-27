@@ -25,11 +25,11 @@
     </default>
 
     <asset>
-        <mesh file="../objects/meshes/laptop/laptop_keys.stl" name="laptop_keys"/>
-        <mesh file="../objects/meshes/laptop/laptop_screen.stl" name="laptop_screen"/>
-        <mesh file="../objects/meshes/laptop/laptop_top.stl" name="laptop_top"/>
-        <mesh file="../objects/meshes/laptop/laptop_hinge.stl" name="laptop_hinge"/>
-        <mesh file="../objects/meshes/laptop/laptop_base.stl" name="laptop_base"/>
+        <mesh file="../objects/meshes/laptop/laptop_keys.stl" name="laptop_keys" scale="0.8 0.8 0.8"/>
+        <mesh file="../objects/meshes/laptop/laptop_screen.stl" name="laptop_screen" scale="0.8 0.8 0.8"/>
+        <mesh file="../objects/meshes/laptop/laptop_top.stl" name="laptop_top" scale="0.8 0.8 0.8"/>
+        <mesh file="../objects/meshes/laptop/laptop_hinge.stl" name="laptop_hinge" scale="0.8 0.8 0.8"/>
+        <mesh file="../objects/meshes/laptop/laptop_base.stl" name="laptop_base" scale="0.8 0.8 0.8"/>
     </asset>
 
 </mujocoinclude>
