@@ -52,3 +52,17 @@ class SawyerCoffeePullV2Policy(Policy):
             return -1.
         else:
             return .7
+
+
+class SawyerCoffeePullV2PolicyNewV0(SawyerCoffeePullV2Policy):
+
+    @staticmethod
+    @assert_fully_parsed
+    def _parse_obs(obs):
+        return {
+            'hand_pos': obs[:3],
+            'gripper': obs[3],
+            'mug_pos': obs[4:7],
+            'unused_info': obs[7:19],
+            'target_pos': obs[-3:]
+        }

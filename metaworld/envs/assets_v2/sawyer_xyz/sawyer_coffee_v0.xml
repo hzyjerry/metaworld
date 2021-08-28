@@ -16,9 +16,9 @@
           <include file="../objects/assets/mug.xml"/>
         </body>
         <include file="../objects/assets/xyz_base.xml"/>
-        <body name="obj_soccer" pos="0.2 0.8 0.3">
-            <joint name="obj_soccer" type="free" limited='false' damping="0.0" armature="0" />
-            <inertial pos="0 0 0" mass="0.01" diaginertia="100000 100000 100000"/>
+        <body name="obj_soccer" pos="0.2 0.8 0.02">
+            <joint name="obj_soccer_joint" type="free" limited='false' damping="0.0" armature="0" />
+            <inertial pos="0 0 0" mass="0.5" diaginertia="1 1 1"/>
             <!-- <geom name="objGeom2" type="box" pos="0 0 0" solimp="0.99 0.99 0.01"
                   size="0.02 0.02 0.02" rgba="0 0 1 1" solref="0.01 1"
                   contype="1" conaffinity="1" friction="2 0.1 0.002" condim="4"

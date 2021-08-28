@@ -195,7 +195,6 @@ class SawyerXYZEnv(SawyerMocapBase, metaclass=abc.ABCMeta):
         self.set_metaworld_state(qpos, qvel)
 
     def _get_site_pos(self, siteName):
-        # import pdb; pdb.set_trace()
         _id = self.model.site_names.index(siteName)
         return self.data.site_xpos[_id].copy()
 
