@@ -66,3 +66,42 @@ class SawyerCoffeePullV2PolicyNewV0(SawyerCoffeePullV2Policy):
             'unused_info': obs[7:19],
             'target_pos': obs[-3:]
         }
+
+    def get_action(self, obs):
+        o_d = self._parse_obs(obs)
+
+        action = Action({
+            'delta_pos': np.arange(3),
+            'grab_effort': 3
+        })
+
+        action['delta_pos'] = move(o_d['hand_pos'], to_xyz=self._desired_pos(o_d), p=8.)
+        action['grab_effort'] = self._grab_effort(o_d)
+
+        return action.array
+
+
+    @staticmethod
+    def _desired_pos(o_d):
+        pos_curr = o_d['hand_pos']
+        pos_mug = o_d['mug_pos'] + np.array([-.01, .0, .05])
+        graspped = o_d['gripper'] < 0.65
+        # print(f"Gripper {o_d['gripper']}")
+
+        if np.linalg.norm(pos_curr[:2] - pos_mug[:2]) > 0.04:
+            return pos_mug + np.array([.0, .0, .05])
+        elif abs(pos_curr[2] - pos_mug[2]) > 0.04:
+            return pos_mug
+        else:
+            return o_d['target_pos']
+
+    @staticmethod
+    def _grab_effort(o_d):
+        pos_curr = o_d['hand_pos']
+        pos_mug = o_d['mug_pos'] + np.array([-.01, .0, .05])
+
+        if np.linalg.norm(pos_curr[:2] - pos_mug[:2]) > 0.06 or \
+            abs(pos_curr[2] - pos_mug[2]) > 0.085:
+            return -1.
+        else:
+            return .7

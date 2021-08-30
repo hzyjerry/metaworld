@@ -1,7 +1,7 @@
 <mujocoinclude>
-    <body childclass="bin_base" name="objA">
+    <body childclass="bin_base" name="mug">
         <geom material="obj_green" size="0.02 0.02 0.02" type="box"/>
 
-        <geom class="obj_col" size="0.02 0.02 0.02" type="box" mass=".1"/>
+        <geom class="obj_col" name="mug" size="0.03 0.03 0.03" type="box" mass=".1" friction="1 1 1"/>
     </body>
 </mujocoinclude>
