@@ -57,4 +57,9 @@
     <equality>
         <weld body1="mocap" body2="hand" solref="0.02 1"></weld>
     </equality>
+    <!-- <equality> -->
+        <!-- <weld body1="hand" body2="mug" solref="0.02 1" relpose="0 0 0 1 0 0 0"></weld> -->
+        <!-- <connect body1="hand" body2="mug" solref="0.02 1" anchor="0 0 0"></connect> -->
+    <!-- </equality> -->
+
 </mujoco>
