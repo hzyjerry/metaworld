@@ -1,7 +1,7 @@
-<mujoco model="obj">
-    <include file="assets/bin_dependencies.xml"/>
-    <include file="../scene/basic_scene.xml"/>
-    <worldbody>
-        <include file="assets/objA.xml"/>
-    </worldbody>
-</mujoco>
+<mujocoinclude>
+    <body childclass="bin_base" name="objA">
+        <geom material="obj_green" size="0.02 0.02 0.02" type="box"/>
+
+        <geom class="obj_col" size="0.02 0.02 0.02" type="box" mass=".1"/>
+    </body>
+</mujocoinclude>
